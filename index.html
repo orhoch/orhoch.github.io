@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Or Hochman Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: an editor's proof sheet. Margin notes in mono on the left, the work on the right; the highlighter marks what matters. */
+  --paper:#F3F4F1;
+  --ink:#16181D;
+  --muted:#5D6270;
+  --rule:#C9CCD3;
+  --accent:#2340E6;
+  --mark:#FFE45C;
+  --card:#FFFFFF;
+  --display:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.55}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+mark{background:linear-gradient(transparent 12%,var(--mark) 12%,var(--mark) 88%,transparent 88%);color:inherit;padding:0 .12em}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--ink);flex-wrap:wrap}
+.top nav{display:flex;gap:22px;flex-wrap:wrap}
+.top nav a{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:64px 0 56px;border-bottom:1px solid var(--rule)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,7.4vw,96px);line-height:.95;letter-spacing:-.035em;margin:0 0 28px;text-wrap:balance}
+.hero h1 .strike{position:relative;color:var(--muted);font-weight:400}
+.hero h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.07em;background:var(--accent);transform:scaleX(1);transform-origin:left;animation:strike .7s .5s ease-out both}
+.hero h1 .ins{color:var(--accent)}
+@keyframes strike{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes fade{from{opacity:.25}to{opacity:1}}
+.hero .lede{font-size:23px;line-height:1.45;max-width:36ch;margin:0}
+.hero .meta{display:flex;flex-direction:column;gap:6px;padding-top:10px}
+.hcontact{display:flex;flex-direction:column;gap:4px;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12.5px}
+.hcontact span,.hcontact a{color:var(--ink)}
+.role{font-family:var(--display);font-weight:700;font-size:20px;margin:0 0 4px}
+
+/* sections */
+section{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:64px 0;border-bottom:1px solid var(--rule)}
+.side h2{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05;letter-spacing:-.02em;margin:8px 0 10px}
+.side p{font-size:15.5px;color:var(--muted);margin:0;line-height:1.45}
+.list{display:flex;flex-direction:column}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px 28px;padding:24px 0;border-top:1px solid var(--rule)}
+.item:first-child{border-top:none;padding-top:0}
+.item h3{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.15;letter-spacing:-.01em;margin:0 0 6px;text-wrap:balance}
+.item p{margin:0 0 10px;max-width:62ch}
+.item .client{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block}
+.item .links{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:13px}
+.item .lang{white-space:nowrap;align-self:start}
+.skills{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px;padding:0;list-style:none}
+.skills li{font-family:var(--mono);font-size:12px;border:1px solid var(--rule);border-radius:3px;padding:2px 8px;background:var(--card);color:var(--ink)}
+
+/* AI builds */
+.build{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:28px;margin-bottom:22px}
+.build.feature{border-color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.build h3{font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.01em;margin:4px 0 8px;text-wrap:balance}
+.build p{margin:0 0 12px;max-width:62ch}
+.flow{overflow-x:auto;margin:18px 0 10px;padding-bottom:4px}
+.flow svg{display:block;min-width:640px;width:100%;height:auto}
+.flow text{font-family:var(--mono);font-size:12px;fill:var(--ink)}
+.flow .lbl{font-size:10.5px;fill:var(--muted);text-transform:uppercase}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pair .build{margin:0}
+.pending{align-self:flex-start;display:inline-block;font-family:var(--mono);font-size:12px;background:var(--mark);padding:2px 8px;border-radius:3px;color:var(--ink)}
+
+/* video */
+.reel{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.thumb{display:block;margin:10px 0 14px;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.thumb img{display:block;width:100%;height:auto;aspect-ratio:900/780;object-fit:cover;transition:transform .3s}
+.thumb:hover img{transform:scale(1.02)}
+.vcol{display:flex;flex-direction:column;gap:28px}
+.char{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:24px}
+.vvid{display:block;width:100%;aspect-ratio:9/16;background:var(--ink);border-radius:4px;object-fit:cover}
+.char h3{font-family:var(--display);font-weight:700;font-size:24px;margin:6px 0 10px;text-wrap:balance}
+.char p{margin:0 0 12px;max-width:58ch;font-size:17.5px}
+.frame{display:flex;flex-direction:column;gap:10px}
+.screen{aspect-ratio:16/9;background:var(--ink);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px}
+.screen::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(255,255,255,.035) 22px 23px)}
+.screen .tc{position:relative;font-family:var(--mono);font-size:11px;color:#B9BFCC;letter-spacing:.06em}
+.screen .play{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1.5px solid #fff;display:grid;place-items:center}
+.screen .play::after{content:"";border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+.vid{display:block;width:100%;aspect-ratio:16/9;background:var(--ink);border-radius:4px;object-fit:cover}
+.watch{font-family:var(--mono);font-size:13px}
+.frame h3{font-family:var(--display);font-weight:700;font-size:20px;margin:0}
+.frame p{margin:0;font-size:16.5px;line-height:1.45}
+
+/* stack + contact */
+.wlist{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.wrow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none}
+.wrow:hover .wt{color:var(--accent)}
+.wt{font-size:18px}
+@media (max-width:620px){.wrow{grid-template-columns:1fr auto}.wrow .mono:first-child{grid-column:1/-1}}
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.stack h3{font-family:var(--mono);font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin:0 0 10px}
+.stack p{margin:0;font-size:17px}
+.contact{padding:72px 0 56px}
+.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5.5vw,64px);letter-spacing:-.03em;line-height:1;margin:0 0 26px}
+.contact .row{display:flex;flex-wrap:wrap;gap:14px 34px;font-family:var(--mono);font-size:15px}
+.contact .row a,.contact .row span{color:var(--ink)}
+footer{padding:20px 0 40px;border-top:1px solid var(--ink)}
+
+@media (max-width:820px){
+  .char{grid-template-columns:1fr}.vvid{max-width:280px}
+  .hero,section{grid-template-columns:1fr;gap:18px}
+  .pair,.reel,.wlist{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.wrow{display:grid;grid-template-columns:170px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none}
+.wrow:hover .wt{color:var(--accent)}
+.wt{font-size:18px}
+@media (max-width:620px){.wrow{grid-template-columns:1fr auto}.wrow .mono:first-child{grid-column:1/-1}}
+.stack{grid-template-columns:1fr}
+  .item{grid-template-columns:1fr}
+}
+@media (max-width:420px){.wrap{padding:0 18px}body{font-size:18px}.build{padding:20px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <span class="mono" style="color:var(--ink)">Or Hochman</span>
+  <nav aria-label="Sections">
+    <a href="#video">AI video</a>
+    <a href="#ai-builds">AI projects</a>
+    <a href="#writing">Writing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="meta">
+    <p class="role">AI Creative &amp; Content Specialist</p>
+    <span class="mono">Storyteller · Creator · Editor</span>
+    <span class="mono">Based in Israel · Hebrew / English</span>
+    <div class="hcontact">
+      <span>or.hoch6@gmail.com</span>
+      <span>+972-52-6799959</span>
+      <a href="https://www.linkedin.com/in/or-hochman-761432111">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div>
+    <h1>I <span class="strike">write</span> <span class="ins">create</span> stories, videos and content workflows with AI.</h1>
+    <p class="lede">Years of journalism, screenwriting and content strategy taught me what good output looks like. Now I make AI video, interactive concepts and smart content workflows, and hold them to <mark>an editor's standard.</mark></p>
+  </div>
+</div>
+
+
+
+
+
+<section id="video">
+  <div class="side">
+    <span class="mono">01</span>
+    <h2>AI video &amp; visual storytelling</h2>
+    <p>Screenwriting training applied to generative video: story first, tools second.</p>
+  </div>
+  <div class="vcol">
+    <div class="reel">
+      <div class="frame">
+        <video class="vid" controls playsinline preload="none" poster="media/caab.jpg"><source src="media/caab.mp4" type="video/mp4"></video>
+        <h3>CaaB: AI explainer video</h3>
+        <p>A spec explainer for CaaB, a cloud platform for MSPs. Made end to end with AI video tools. 1:18.</p>
+      </div>
+      <div class="frame">
+        <video class="vid" controls playsinline preload="none" poster="media/the-mask.jpg"><source src="media/the-mask.mp4" type="video/mp4"></video>
+        <h3>The Mask: AI short film</h3>
+        <p>An experimental narrative short with a plot, recurring characters and a story arc, written and directed with AI. 1:18.</p>
+      </div>
+    </div>
+    <article class="char">
+      <video class="vvid" controls autoplay muted loop playsinline preload="metadata" poster="media/acciomoon.jpg"><source src="media/acciomoon.mp4" type="video/mp4"></video>
+      <div>
+        <span class="mono">Character series · Veo · Instagram</span>
+        <h3>An original AI character</h3>
+        <p>A recurring character with her own visual world: soft watercolor, a crescent moon in every frame, and a life that moves between the everyday and the dreamlike.</p>
+        <span class="mono">Montage of 10 scenes · 0:37</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="ai-builds">
+  <div class="side">
+    <span class="mono">02</span>
+    <h2>AI projects</h2>
+    <p>Workflows and interactive concepts, each built around a real content problem.</p>
+  </div>
+  <div>
+    <article class="build feature">
+      <span class="mono">n8n · RAG · Hordus AI</span>
+      <h3>An article generator that writes in one journalist's voice and critiques its own drafts</h3>
+      <p>A curated archive of a journalist's selected articles feeds a retrieval step. The model drafts in his style, reviews the draft against the source voice, and revises before anything reaches an editor.</p>
+      <div class="flow" role="img" aria-label="Flow: article archive to vector store, retrieval, draft in the journalist's voice, self-critique loop back to draft, then final article.">
+        <svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16181D"/></marker></defs>
+          <g fill="none" stroke="#16181D" stroke-width="1.3">
+            <rect x="4" y="40" width="118" height="54" rx="4"/>
+            <rect x="160" y="40" width="118" height="54" rx="4"/>
+            <rect x="316" y="40" width="118" height="54" rx="4" fill="#FFE45C"/>
+            <rect x="472" y="40" width="118" height="54" rx="4" stroke="#2340E6" stroke-width="2"/>
+            <rect x="628" y="40" width="128" height="54" rx="4" fill="#16181D"/>
+            <path d="M122 67H156" marker-end="url(#ar)"/>
+            <path d="M278 67H312" marker-end="url(#ar)"/>
+            <path d="M434 67H468" marker-end="url(#ar)"/>
+            <path d="M590 67H624" marker-end="url(#ar)"/>
+            <path d="M531 94C531 132 375 132 375 98" stroke="#2340E6" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+          </g>
+          <text x="63" y="30" text-anchor="middle" class="lbl">input</text>
+          <text x="63" y="64" text-anchor="middle">Article</text><text x="63" y="80" text-anchor="middle">archive</text>
+          <text x="219" y="30" text-anchor="middle" class="lbl">rag</text>
+          <text x="219" y="64" text-anchor="middle">Retrieve</text><text x="219" y="80" text-anchor="middle">examples</text>
+          <text x="375" y="30" text-anchor="middle" class="lbl">llm</text>
+          <text x="375" y="64" text-anchor="middle">Draft in</text><text x="375" y="80" text-anchor="middle">his voice</text>
+          <text x="531" y="30" text-anchor="middle" class="lbl">llm</text>
+          <text x="531" y="64" text-anchor="middle">Self-</text><text x="531" y="80" text-anchor="middle">critique</text>
+          <text x="692" y="30" text-anchor="middle" class="lbl">output</text>
+          <text x="692" y="72" text-anchor="middle" style="fill:#fff">Final article</text>
+          <text x="453" y="144" text-anchor="middle" class="lbl" style="fill:#2340E6">revise until it passes</text>
+        </svg>
+      </div>
+      <ul class="skills"><li>n8n</li><li>RAG</li><li>Prompt engineering</li><li>Style transfer</li></ul>
+    </article>
+
+    <div class="pair">
+      <article class="build">
+        <span class="mono">Python · Multi-agent · Technion capstone</span>
+        <h3>Multi-agent recruitment chatbot</h3>
+        <p>An LLM-powered orchestrator classifies each message in real time and routes it to the right agent, with RAG over recruitment content. Evaluated with Scikit-Learn.</p>
+        <ul class="skills"><li>LLM orchestration</li><li>RAG</li><li>Scikit-Learn</li><li>Streamlit</li></ul>
+      </article>
+      <article class="build">
+        <span class="mono">Interactive concept · Book marketing</span>
+        <a class="thumb" href="https://orhoch.github.io/book-shelf/"><img src="media/bookshelf.jpg" alt="The bookshelf page: three book spines, The Little Prince, Dracula and On the Origin of Species, under the heading Pick a book from the shelf" width="900" height="780"></a>
+        <h3>The Classic Books Bookshelf</h3>
+        <p>A playful way to sell classics. Each book on the shelf (The Little Prince, Dracula, On the Origin of Species) opens quote-based mini-games that end with a link to buy it.</p>
+        <div class="links" style="font-family:var(--mono);font-size:13px"><a href="https://orhoch.github.io/book-shelf/">Open the bookshelf ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="side">
+    <span class="mono">03</span>
+    <h2>Writing &amp; content strategy</h2>
+    <p>Where it started: B2B tech, research and storytelling, in English and Hebrew.</p>
+  </div>
+  <div class="wlist">
+    <a class="wrow" href="https://www.tebex.io/resources/why-game-studios-are-taking-payments-into-their-own-hands-and-what-that-requires"><span class="mono">Tebex</span><span class="wt">GEO-driven B2B article on game studio payments</span><span class="mono">EN ↗</span></a>
+    <a class="wrow" href="https://www.datarails.com/finance-mcp-server/"><span class="mono">Datarails</span><span class="wt">Explaining MCP servers for finance teams</span><span class="mono">EN ↗</span></a>
+    <a class="wrow" href="https://life-sciences.biu.ac.il/node/10322"><span class="mono">Bar-Ilan Univ.</span><span class="wt">Genome editing (CRISPR) and the future of genetic engineering</span><span class="mono">HE ↗</span></a>
+    <a class="wrow" href="https://shalem.ac.il/content-channel/%D7%99%D7%99%D7%A2%D7%95%D7%A5-%D7%A4%D7%99%D7%A0%D7%A0%D7%A1%D7%99-%D7%95%D7%9E%D7%93%D7%A2%D7%99-%D7%94%D7%A8%D7%95%D7%97/"><span class="mono">Deloitte · Shalem</span><span class="wt">Interview-based feature on consulting internships</span><span class="mono">HE ↗</span></a>
+    <a class="wrow" href="https://comaxerp.com/%D7%91%D7%9C%D7%95%D7%92/"><span class="mono">Comax</span><span class="wt">End-to-end management of a B2B corporate blog</span><span class="mono">HE ↗</span></a>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="side">
+    <span class="mono">04</span>
+    <h2>Toolkit</h2>
+  </div>
+  <div class="stack">
+    <div><h3>Creative AI</h3><p>Veo, Google Vids, Higgsfield, Midjourney, Claude, Gemini Gems, Perplexity</p></div>
+    <div><h3>AI workflows</h3><p>Prompt engineering, LLMs, RAG, n8n, Flowise, multi-agent systems, Python, Streamlit</p></div>
+    <div><h3>Content &amp; growth</h3><p>SEO, GEO/AEO, copywriting, Google Analytics, Google Ads, WordPress</p></div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <span class="mono" style="display:block;margin-bottom:16px">05 · Contact</span>
+  <div class="row">
+    <span>or.hoch6@gmail.com</span>
+    <span>+972-52-6799959</span>
+    <a href="https://www.linkedin.com/in/or-hochman-761432111">LinkedIn ↗</a>
+  </div>
+</div>
+
+<footer><span class="mono">© Or Hochman</span></footer>
+</div>
+</body>
+</html>
