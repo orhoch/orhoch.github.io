@@ -33,6 +33,9 @@ mark{background:linear-gradient(transparent 12%,var(--mark) 12%,var(--mark) 88%,
 
 /* top bar */
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--ink);flex-wrap:wrap}
+.tl{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.tc2{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-decoration:none}
+a.tc2:hover{color:var(--accent)}
 .top nav{display:flex;gap:22px;flex-wrap:wrap}
 .top nav a{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);text-decoration:none}
 .top nav a:hover{color:var(--accent)}
@@ -112,7 +115,7 @@ section{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:64px 0;bor
 .stack h3{font-family:var(--mono);font-size:12.5px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);margin:0 0 10px}
 .stack p{margin:0;font-size:17px}
 .contact{padding:72px 0 56px}
-.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5.5vw,64px);letter-spacing:-.03em;line-height:1;margin:0 0 26px}
+.contact h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.05;margin:8px 0 20px}
 .contact .row{display:flex;flex-wrap:wrap;gap:14px 34px;font-family:var(--mono);font-size:15px}
 .contact .row a,.contact .row span{color:var(--ink)}
 footer{padding:20px 0 40px;border-top:1px solid var(--ink)}
@@ -145,7 +148,12 @@ footer{padding:20px 0 40px;border-top:1px solid var(--ink)}
 <div class="wrap">
 
 <header class="top">
-  <span class="mono" style="color:var(--ink)">Or Hochman</span>
+  <div class="tl">
+    <span class="mono" style="color:var(--ink);font-weight:500">Or Hochman</span>
+    <span class="tc2">or.hoch6@gmail.com</span>
+    <span class="tc2">+972-52-6799959</span>
+    <a class="tc2" href="https://www.linkedin.com/in/or-hochman-761432111">LinkedIn ↗</a>
+  </div>
   <nav aria-label="Sections">
     <a href="#video">AI video</a>
     <a href="#ai-builds">AI projects</a>
@@ -159,11 +167,6 @@ footer{padding:20px 0 40px;border-top:1px solid var(--ink)}
     <p class="role">AI Creative &amp; Content Specialist</p>
     <span class="mono">Storyteller · Creator · Editor</span>
     <span class="mono">Based in Israel · Hebrew / English</span>
-    <div class="hcontact">
-      <span>or.hoch6@gmail.com</span>
-      <span>+972-52-6799959</span>
-      <a href="https://www.linkedin.com/in/or-hochman-761432111">LinkedIn ↗</a>
-    </div>
   </div>
   <div>
     <h1>I <span class="strike">write</span> <span class="ins">create</span> stories, videos and content workflows with AI.</h1>
@@ -322,7 +325,8 @@ footer{padding:20px 0 40px;border-top:1px solid var(--ink)}
 </section>
 
 <div class="contact" id="contact">
-  <span class="mono" style="display:block;margin-bottom:16px">05 · Contact</span>
+  <span class="mono">05 · Contact</span>
+  <h2>Get in touch</h2>
   <div class="row">
     <span>or.hoch6@gmail.com</span>
     <span>+972-52-6799959</span>
